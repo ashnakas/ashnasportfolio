@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashna's Portfolio</title>
+    <title>Ashna Kasireddy - Product Designer & Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=VT323&family=Press+Start+2P&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -14,592 +15,52 @@
         }
 
         :root {
-            --cyber-pink: #ff00ff;
-            --cyber-cyan: #00ffff;
-            --cyber-yellow: #ffff00;
-            --cyber-green: #00ff00;
-            --matrix-green: #39ff14;
-            --space-purple: #9d00ff;
-            --chrome-silver: #c0c0c0;
-            --win98-blue: #0000aa;
-            --win98-teal: #008080;
-        }
-
-        body {
-            font-family: 'Orbitron', 'Courier New', monospace;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 0, 0, 0.1) 3px),
-                repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 0, 0, 0.1) 3px);
-            pointer-events: none;
-            z-index: 1;
-            animation: scanlines 8s linear infinite;
-        }
-
-        @keyframes scanlines {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(4px); }
-        }
-
-        /* Accessibility Toggle */
-        .accessibility-toggle {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 10000;
-            background: linear-gradient(145deg, #ffffff, #e0e0e0);
-            border: 3px solid #000;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-family: 'Press Start+2P', monospace;
-            font-size: 10px;
-            box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .accessibility-toggle:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.5);
-        }
-
-        .accessibility-toggle:focus {
-            outline: 3px solid var(--cyber-cyan);
-            outline-offset: 3px;
-        }
-
-        /* Plain View Styles */
-        body.plain-view {
-            background: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        }
-
-        body.plain-view::before {
-            display: none;
-        }
-
-        body.plain-view .browser-window {
-            background: white !important;
-            border: 2px solid #333 !important;
-            box-shadow: none !important;
-        }
-
-        body.plain-view .title-bar {
-            background: #f0f0f0 !important;
-            border-bottom: 2px solid #333 !important;
-        }
-
-        body.plain-view .window-title {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-            font-size: 14px !important;
-            background: transparent !important;
-            -webkit-background-clip: unset !important;
-            -webkit-text-fill-color: #000 !important;
-            text-shadow: none !important;
-        }
-
-        body.plain-view .content-area {
-            background: white !important;
-        }
-
-        body.plain-view .nav-button,
-        body.plain-view .project-card,
-        body.plain-view .section-card {
-            background: #f5f5f5 !important;
-            border: 1px solid #ccc !important;
-            box-shadow: none !important;
-            animation: none !important;
-        }
-
-        body.plain-view .pixelated-icon {
-            filter: none !important;
-        }
-
-        /* Browser Window */
-        .browser-window {
-            max-width: 1200px;
-            margin: 40px auto;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(230, 230, 255, 0.95));
-            border: 4px outset var(--chrome-silver);
-            border-radius: 8px;
-            box-shadow: 
-                0 0 0 2px #000,
-                0 20px 60px rgba(0, 0, 0, 0.5),
-                inset 0 0 20px rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-            animation: browserFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes browserFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(0.5deg); }
-        }
-
-        .title-bar {
-            background: linear-gradient(180deg, var(--win98-blue), #0000cc);
-            padding: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #fff;
-        }
-
-        .window-title {
-            color: #fff;
-            font-family: 'Press Start+2P', monospace;
-            font-size: 11px;
-            padding: 4px 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(90deg, var(--cyber-cyan), var(--cyber-pink), var(--cyber-yellow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            animation: titleGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.5); }
-        }
-
-        .window-controls {
-            display: flex;
-            gap: 4px;
-        }
-
-        .window-control {
-            width: 20px;
-            height: 20px;
-            border: 2px outset var(--chrome-silver);
-            background: linear-gradient(145deg, #ddd, #bbb);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 12px;
-            transition: all 0.2s;
-        }
-
-        .window-control:hover {
-            border-style: inset;
-        }
-
-        .window-control:focus {
-            outline: 2px solid var(--cyber-cyan);
-            outline-offset: 2px;
-        }
-
-        .window-control.close {
-            background: linear-gradient(145deg, #ff4444, #cc0000);
-            color: white;
-        }
-
-        /* Navigation Bar */
-        .nav-bar {
-            background: linear-gradient(180deg, #f0f0f0, #d4d4d4);
-            padding: 8px;
-            border-bottom: 2px inset var(--chrome-silver);
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
-        .nav-button {
-            padding: 6px 12px;
-            border: 2px outset var(--chrome-silver);
-            background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
-            font-family: 'VT323', monospace;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-            transition: left 0.5s;
-        }
-
-        .nav-button:hover::before {
-            left: 100%;
-        }
-
-        .nav-button:hover {
-            border-style: inset;
-            transform: translateY(1px);
-            box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-button:focus {
-            outline: 3px solid var(--cyber-cyan);
-            outline-offset: 2px;
-        }
-
-        .nav-button.active {
-            background: linear-gradient(145deg, var(--cyber-cyan), var(--space-purple));
-            color: white;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-            border-style: inset;
-            animation: activeGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes activeGlow {
-            0%, 100% { box-shadow: 0 0 5px var(--cyber-cyan); }
-            50% { box-shadow: 0 0 15px var(--cyber-pink); }
-        }
-
-        /* Address Bar */
-        .address-bar {
-            background: white;
-            border: 2px inset var(--chrome-silver);
-            margin: 8px;
-            padding: 6px;
-            font-family: 'VT323', monospace;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .address-bar::before {
-            content: '🌐';
-            filter: drop-shadow(0 0 2px var(--cyber-cyan));
-        }
-
-        /* Content Area */
-        .content-area {
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.1), transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(0, 255, 255, 0.1), transparent 50%),
-                #f0f0ff;
-            padding: 30px;
-            min-height: 500px;
-            position: relative;
-        }
-
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Home Page - Y2K Space Theme */
-        .home-hero {
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 56px;
-            font-weight: 900;
-            background: linear-gradient(45deg, var(--cyber-pink), var(--cyber-cyan), var(--cyber-yellow), var(--cyber-pink));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 4s ease infinite;
-            text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
-            margin-bottom: 20px;
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-subtitle {
-            font-family: 'VT323', monospace;
-            font-size: 28px;
-            color: var(--space-purple);
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .pixelated-icon {
-            width: 120px;
-            height: 120px;
-            margin: 20px auto;
-            image-rendering: pixelated;
-            filter: drop-shadow(0 0 10px var(--cyber-cyan));
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        .welcome-message {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(230, 230, 255, 0.9));
-            border: 4px double var(--space-purple);
-            padding: 25px;
-            margin: 30px auto;
-            max-width: 700px;
-            box-shadow: 
-                0 0 20px rgba(157, 0, 255, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.5);
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .project-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.95));
-            border: 3px solid var(--cyber-cyan);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 
-                0 8px 16px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(0, 255, 255, 0.3),
-                inset 0 0 10px rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 0, 255, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 
-                0 12px 24px rgba(0, 0, 0, 0.3),
-                0 0 30px var(--cyber-pink);
-            border-color: var(--cyber-pink);
-        }
-
-        .project-card:focus-within {
-            outline: 3px solid var(--cyber-yellow);
-            outline-offset: 3px;
-        }
-
-        .project-icon {
-            width: 60px;
-            height: 60px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 5px var(--cyber-cyan));
-            image-rendering: pixelated;
-        }
-
-        .project-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--space-purple);
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .project-type {
-            font-family: 'VT323', monospace;
-            font-size: 16px;
-            color: var(--win98-teal);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .project-description {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #333;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 8px 16px;
-            background: linear-gradient(145deg, var(--cyber-pink), var(--space-purple));
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            border: 2px solid var(--cyber-cyan);
-            font-family: 'Press Start+2P', monospace;
-            font-size: 10px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px var(--cyber-cyan);
-        }
-
-        .project-link:focus {
-            outline: 3px solid var(--cyber-yellow);
-            outline-offset: 3px;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .section-card {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 255, 0.95));
-            border: 3px solid var(--cyber-cyan);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 
-                0 8px 16px rgba(0, 0, 0, 0.2),
-                0 0 20px rgba(0, 255, 255, 0.3);
-        }
-
-        .section-card h2 {
-            font-family: 'Orbitron', monospace;
-            font-size: 32px;
-            color: var(--space-purple);
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
-        }
-
-        .section-card p, .section-card ul {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .section-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .section-card li {
-            padding: 8px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .section-card li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--cyber-pink);
-            font-size: 20px;
-        }
-
-        /* Status Bar */
-        .status-bar {
-            background: linear-gradient(180deg, #d4d4d4, #b0b0b0);
-            border-top: 2px outset var(--chrome-silver);
-            padding: 4px 8px;
-            font-family: 'VT323', monospace;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .status-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .status-icon {
-            width: 16px;
-            height: 16px;
-            filter: drop-shadow(0 0 2px var(--matrix-green));
-        }
-
-        /* Skip to content link for accessibility */
-        .skip-to-content {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: #000;
-            color: #fff;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        }
-
-        .skip-to-content:focus {
-            top: 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .browser-window {
-                margin: 20px 10px;
-            }
-
-            .hero-title {
-                font-size: 36px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-bar {
-                flex-direction: column;
-            }
-
-            .nav-button {
-                width: 100%;
-            }
-        }
-
-        /* Screen reader only text */
+            /* Color System */
+            --color-bg: #FAFAFA;
+            --color-surface: #FFFFFF;
+            --color-text-primary: #0A0A0A;
+            --color-text-secondary: #525252;
+            --color-text-tertiary: #737373;
+            --color-accent: #3B82F6;
+            --color-accent-hover: #2563EB;
+            --color-border: #E5E5E5;
+            --color-success: #10B981;
+            --color-warning: #F59E0B;
+            --color-error: #EF4444;
+            
+            /* Typography */
+            --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Space Mono', 'Courier New', monospace;
+            
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Screen Reader Only */
         .sr-only {
             position: absolute;
             width: 1px;
@@ -612,20 +73,673 @@
             border-width: 0;
         }
 
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            .browser-window {
-                border: 4px solid #000;
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-bg);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Accessibility Toggle */
+        .accessibility-toggle {
+            position: fixed;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            z-index: 10000;
+            background: var(--color-surface);
+            border: 2px solid var(--color-border);
+            padding: var(--space-sm) var(--space-md);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            border-radius: var(--radius-full);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .accessibility-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent);
+        }
+
+        .accessibility-toggle:focus {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-lg);
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-2xl);
+            position: sticky;
+            top: 0;
+            background: var(--color-bg);
+            z-index: 100;
+            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
             }
-            
-            .nav-button, .project-card, .section-card {
-                border: 3px solid #000;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Reduced motion support */
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            transition: color var(--transition-base);
+        }
+
+        .logo:hover {
+            color: var(--color-accent);
+        }
+
+        .logo::before {
+            content: '●';
+            color: var(--color-success);
+            font-size: 12px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-md);
+            list-style: none;
+        }
+
+        .nav-button {
+            background: transparent;
+            border: none;
+            padding: var(--space-sm) var(--space-md);
+            cursor: pointer;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-button:hover {
+            color: var(--color-text-primary);
+            background: var(--color-surface);
+        }
+
+        .nav-button.active {
+            color: var(--color-accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-button:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: var(--space-3xl) 0;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-accent);
+            background: rgba(59, 130, 246, 0.1);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--radius-full);
+            margin-bottom: var(--space-lg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-description {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin-bottom: var(--space-2xl);
+            line-height: 1.5;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--color-surface);
+            color: var(--color-text-primary);
+            border-color: var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:focus {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* Project Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-3xl);
+        }
+
+        .project-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-slow);
+            border: 1px solid var(--color-border);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition-slow);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:focus-within {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            transition: transform var(--transition-slow);
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: var(--space-lg);
+        }
+
+        .project-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-accent);
+            background: rgba(59, 130, 246, 0.1);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            color: var(--color-text-primary);
+        }
+
+        .project-description {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        .tech-tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-text-tertiary);
+            background: var(--color-bg);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-3xl) 0;
+            padding: var(--space-2xl);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-accent);
+            font-family: var(--font-mono);
+            display: block;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .section-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            margin-bottom: var(--space-lg);
+            transition: all var(--transition-base);
+        }
+
+        .section-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-accent);
+        }
+
+        .section-card h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+        .section-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+            line-height: 1.7;
+        }
+
+        .section-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section-card li {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+            position: relative;
+            line-height: 1.7;
+        }
+
+        .section-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .section-card strong {
+            color: var(--color-text-primary);
+            font-weight: 600;
+        }
+
+        .section-card a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color var(--transition-base);
+            border-bottom: 2px solid transparent;
+        }
+
+        .section-card a:hover {
+            color: var(--color-accent-hover);
+            border-bottom-color: var(--color-accent-hover);
+        }
+
+        .section-card a:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+        }
+
+        .contact-item:hover {
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+            transform: translateX(4px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+        }
+
+        .contact-value {
+            font-size: 16px;
+            color: var(--color-text-primary);
+            font-weight: 500;
+        }
+
+        .contact-value a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .contact-value a:hover {
+            color: var(--color-accent);
+        }
+
+        .contact-value a:focus {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: var(--space-3xl);
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .footer-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            font-family: var(--font-mono);
+        }
+
+        .footer-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) var(--space-sm);
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--space-md);
+            }
+
+            .nav {
+                flex-direction: column;
+                gap: var(--space-md);
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: var(--space-sm);
+            }
+
+            .hero {
+                padding: var(--space-xl) 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .accessibility-toggle {
+                top: var(--space-md);
+                right: var(--space-md);
+                font-size: 11px;
+            }
+        }
+
+        /* High Contrast Mode */
+        body.high-contrast {
+            --color-bg: #FFFFFF;
+            --color-surface: #FFFFFF;
+            --color-text-primary: #000000;
+            --color-text-secondary: #000000;
+            --color-text-tertiary: #000000;
+            --color-border: #000000;
+        }
+
+        body.high-contrast .project-card,
+        body.high-contrast .section-card,
+        body.high-contrast .contact-item {
+            border: 2px solid #000000;
+        }
+
+        body.high-contrast .btn-secondary {
+            border: 2px solid #000000;
+        }
+
+        /* Focus Visible */
+        *:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        /* Reduced Motion */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
@@ -634,336 +748,341 @@
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
-
-    <button class="accessibility-toggle" 
-            onclick="togglePlainView()" 
-            aria-label="Toggle accessible plain view"
-            title="Switch between retro and plain accessible view">
-        👁️ PLAIN VIEW
+    <!-- Accessibility Toggle -->
+    <button class="accessibility-toggle" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
+        <span aria-hidden="true">◐</span>
+        <span id="contrast-label">High Contrast</span>
     </button>
 
-    <main class="browser-window" role="main">
-        <header class="title-bar">
-            <div class="window-title" aria-label="Portfolio Browser Window">
-                <span aria-hidden="true">⚡</span>
-                <span>Y2K PORTFOLIO EXPERIENCE</span>
-                <span aria-hidden="true">⚡</span>
-            </div>
-            <div class="window-controls">
-                <button class="window-control minimize" aria-label="Minimize window" tabindex="-1">_</button>
-                <button class="window-control maximize" aria-label="Maximize window" tabindex="-1">□</button>
-                <button class="window-control close" aria-label="Close window" tabindex="-1">×</button>
-            </div>
-        </header>
-
-        <nav class="nav-bar" role="navigation" aria-label="Main navigation">
-            <button class="nav-button active" onclick="showSection('home')" data-section="home" aria-label="Navigate to home page">
-                🏠 HOME
-            </button>
-            <button class="nav-button" onclick="showSection('projects')" data-section="projects" aria-label="Navigate to projects page">
-                💾 PROJECTS
-            </button>
-            <button class="nav-button" onclick="showSection('about')" data-section="about" aria-label="Navigate to about page">
-                👤 ABOUT
-            </button>
-            <button class="nav-button" onclick="showSection('contact')" data-section="contact" aria-label="Navigate to contact page">
-                📧 CONTACT
-            </button>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav" role="navigation" aria-label="Main navigation">
+            <a href="#" class="logo" aria-label="Ashna Kasireddy - Home">AK</a>
+            <ul class="nav-links">
+                <li><button class="nav-button active" data-section="home" onclick="showSection('home')" aria-label="Navigate to home">Home</button></li>
+                <li><button class="nav-button" data-section="projects" onclick="showSection('projects')" aria-label="Navigate to projects">Projects</button></li>
+                <li><button class="nav-button" data-section="about" onclick="showSection('about')" aria-label="Navigate to about">About</button></li>
+                <li><button class="nav-button" data-section="contact" onclick="showSection('contact')" aria-label="Navigate to contact">Contact</button></li>
+            </ul>
         </nav>
 
-        <div class="address-bar" role="status" aria-live="polite" aria-label="Current page address">
-            <span id="current-url">https://portfolio.y2k/home</span>
-        </div>
-
-        <div class="content-area" id="main-content">
-            <!-- HOME SECTION -->
-            <section id="home-section" class="content-section active" aria-labelledby="home-heading">
-                <div class="home-hero">
-                    <h1 id="home-heading" class="hero-title">ASHNA KASIREDDY</h1>
-                    <p class="hero-subtitle">HCI • UI/UX Design • Accessible & Inclusive Digital Experiences</p>
-                    
-                    <svg class="pixelated-icon" viewBox="0 0 120 120" role="img" aria-label="Retro futuristic rocket ship icon">
-                        <title>Animated rocket ship representing innovation and forward thinking</title>
-                        <defs>
-                            <linearGradient id="rocketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#00ffff;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Rocket body -->
-                        <rect x="50" y="30" width="20" height="50" fill="url(#rocketGrad)"/>
-                        <!-- Rocket nose -->
-                        <polygon points="60,10 50,30 70,30" fill="#ffff00"/>
-                        <!-- Rocket fins -->
-                        <polygon points="45,70 50,80 50,70" fill="#ff00ff"/>
-                        <polygon points="75,70 70,80 70,70" fill="#00ffff"/>
-                        <!-- Window -->
-                        <circle cx="60" cy="50" r="6" fill="#fff"/>
-                        <circle cx="60" cy="50" r="4" fill="#000"/>
-                        <!-- Flames -->
-                        <rect x="52" y="80" width="6" height="8" fill="#ff6600"/>
-                        <rect x="58" y="80" width="6" height="8" fill="#ffff00"/>
-                        <rect x="54" y="88" width="12" height="6" fill="#ff0000"/>
-                        <!-- Stars -->
-                        <circle cx="20" cy="20" r="2" fill="#ffff00"/>
-                        <circle cx="100" cy="30" r="2" fill="#00ffff"/>
-                        <circle cx="30" cy="90" r="2" fill="#ff00ff"/>
-                        <circle cx="90" cy="100" r="2" fill="#00ff00"/>
-                    </svg>
-
-                    <div class="welcome-message">
-                        <p><strong>Welcome to my digital space!</strong> I'm Ashna, a fourth-year Computational Media student at Georgia Tech specializing in Human-Computer Interaction and UI/UX Design. I'm passionate about creating <em>user-centered digital experiences</em> that bridge the gap between technology and people.</p>
-                        <p>My work focuses on designing intuitive, accessible interfaces that enhance user interactions through innovative solutions. This portfolio showcases projects that prioritize inclusive design—because technology should work for everyone.</p>
-                        <p><em>Toggle "Plain View" in the top right for a streamlined, high-contrast accessible experience.</em></p>
-                    </div>
+        <!-- HOME SECTION -->
+        <section id="home-section" class="content-section active" aria-labelledby="home-heading">
+            <div class="hero">
+                <span class="hero-label" role="text">Product Designer & Developer</span>
+                <h1 id="home-heading" class="hero-title">
+                    Designing inclusive digital experiences that work for everyone
+                </h1>
+                <p class="hero-description">
+                    I'm Ashna Kasireddy, a product designer and front-end developer passionate about creating accessible, user-centered interfaces. Currently studying Computational Media at Georgia Tech with a focus on HCI and UI/UX.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="showSection('projects')" aria-label="View my projects">
+                        View Projects
+                        <span aria-hidden="true">→</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="showSection('contact')" aria-label="Get in touch">
+                        Get in Touch
+                    </button>
                 </div>
-            </section>
+            </div>
 
-            <!-- PROJECTS SECTION -->
-            <section id="projects-section" class="content-section" aria-labelledby="projects-heading">
-                <h1 id="projects-heading" class="hero-title" style="font-size: 42px; margin-bottom: 30px;">MY PROJECTS</h1>
+            <div class="stats" role="region" aria-label="Key statistics">
+                <div class="stat-item">
+                    <span class="stat-number" aria-label="3.9 GPA">3.9</span>
+                    <span class="stat-label">Major GPA</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" aria-label="2026">2026</span>
+                    <span class="stat-label">Graduation Year</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" aria-label="AAA WCAG">AAA</span>
+                    <span class="stat-label">WCAG Compliant</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" aria-label="5 plus organizations">5+</span>
+                    <span class="stat-label">Organizations</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects-section" class="content-section" aria-labelledby="projects-heading">
+           <section id="projects-section" class="content-section" aria-labelledby="projects-heading">
+                <h1 id="projects-heading" class="section-title">Featured Projects</h1>
                 
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="LeetCode Visualizer project icon">
-                            <title>Code visualization and learning platform icon</title>
-                            <rect x="10" y="15" width="40" height="30" fill="none" stroke="#00ffff" stroke-width="3" rx="3"/>
-                            <path d="M 15 25 L 25 35 L 45 20" stroke="#ff00ff" stroke-width="3" fill="none"/>
-                            <circle cx="20" cy="40" r="3" fill="#ffff00"/>
-                            <circle cx="30" cy="40" r="3" fill="#00ff00"/>
-                            <circle cx="40" cy="40" r="3" fill="#ff6600"/>
-                            <line x1="15" y1="20" x2="25" y2="20" stroke="#ff00ff" stroke-width="2"/>
-                            <line x1="30" y1="20" x2="45" y2="20" stroke="#00ffff" stroke-width="2"/>
-                        </svg>
-                        <h2 class="project-title">LeetCode Visualizer Redesign</h2>
-                        <p class="project-type">Figma • UX/UI Design • Team Project</p>
-                        <p class="project-description">Reimagined the LeetCode learning experience with progressive pathways, real-world analogies, interactive debugger tools, collaborative brainstorm mode, and AI-assisted hints. Features accessible navigation, keyboard shortcuts, and screen reader-optimized learning flows for inclusive programming education.</p>
-                        <a href="#" class="project-link" aria-label="View LeetCode Visualizer Redesign prototype">VIEW PROTOTYPE</a>
+                <div class="projects-grid" role="list" aria-label="Project portfolio">
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="ReCart sustainable fashion platform interface">🛍️</div>
+                        <div class="project-content">
+                            <span class="project-tag">Full Stack</span>
+                            <h2 class="project-title">ReCart</h2>
+                            <p class="project-description">
+                                Sustainable secondhand clothing search platform that aggregates listings across resale sources to reduce friction in finding affordable, eco-friendly fashion. Designed and built clean browsing experience with filtering and search flows focused on usability and fast discovery.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in ReCart">
+                                <span class="tech-tag" role="listitem">React</span>
+                                <span class="tech-tag" role="listitem">Next.js</span>
+                                <span class="tech-tag" role="listitem">Node.js</span>
+                                <span class="tech-tag" role="listitem">UX/UI Design</span>
+                                <span class="tech-tag" role="listitem">Figma</span>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="Space Safari educational game icon">
-                            <title>Solar system educational game for children</title>
-                            <circle cx="30" cy="30" r="6" fill="#ffff00"/>
-                            <circle cx="30" cy="30" r="4" fill="#ff6600"/>
-                            <ellipse cx="30" cy="30" rx="20" ry="8" fill="none" stroke="#00ffff" stroke-width="2"/>
-                            <circle cx="15" cy="30" r="3" fill="#ff00ff"/>
-                            <circle cx="45" cy="30" r="4" fill="#00ff00"/>
-                            <circle cx="25" cy="22" r="2" fill="#9d00ff"/>
-                            <path d="M 35 38 L 40 45 L 35 45 Z" fill="#00ffff"/>
-                        </svg>
-                        <h2 class="project-title">Space Safari</h2>
-                        <p class="project-type">Figma • Educational Game Design • User Testing</p>
-                        <p class="project-description">Interactive solar system learning game for ages 6-10 featuring Smart Animate orbits, tap-to-explore planets, and quiz reinforcement. Evolved through iterative user testing with accessible features including start/end screens, answer feedback, drag instructions, leaderboard, and difficulty options designed for young learners.</p>
-                        <a href="#" class="project-link" aria-label="View Space Safari game prototype">VIEW PROTOTYPE</a>
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="SHOWAbility nonprofit website redesign">🎭</div>
+                        <div class="project-content">
+                            <span class="project-tag">UX/UI Design</span>
+                            <h2 class="project-title">SHOWAbility Website Remodel</h2>
+                            <p class="project-description">
+                                Partnered with SHOWAbility, an inclusive performing arts nonprofit, to redesign and modernize their website structure for clearer navigation, accessibility, and stronger storytelling. Created updated designs and page layouts to improve engagement and conversion for donors and volunteers.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in SHOWAbility project">
+                                <span class="tech-tag" role="listitem">Figma</span>
+                                <span class="tech-tag" role="listitem">UX Research</span>
+                                <span class="tech-tag" role="listitem">Content Strategy</span>
+                                <span class="tech-tag" role="listitem">Accessibility</span>
+                            </div>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="GT Buddy Finder social connection icon">
-                            <title>Student connection and networking platform</title>
-                            <circle cx="30" cy="20" r="6" fill="#ff00ff"/>
-                            <circle cx="15" cy="35" r="5" fill="#00ffff"/>
-                            <circle cx="45" cy="35" r="5" fill="#ffff00"/>
-                            <circle cx="30" cy="45" r="4" fill="#00ff00"/>
-                            <line x1="30" y1="26" x2="15" y2="30" stroke="#ff00ff" stroke-width="2"/>
-                            <line x1="30" y1="26" x2="45" y2="30" stroke="#00ffff" stroke-width="2"/>
-                            <line x1="30" y1="26" x2="30" y2="41" stroke="#ffff00" stroke-width="2"/>
-                            <line x1="15" y1="35" x2="30" y2="45" stroke="#00ff00" stroke-width="1.5"/>
-                            <line x1="45" y1="35" x2="30" y2="45" stroke="#00ff00" stroke-width="1.5"/>
-                        </svg>
-                        <h2 class="project-title">GT Buddy Finder</h2>
-                        <p class="project-type">Figma • Social UX Design • Privacy-Focused</p>
-                        <p class="project-description">Campus connection platform helping Georgia Tech students organically discover friendships through shared classes, interests, and events. Features tiered social graph (1st/2nd/3rd degree connections), smart calendar with friend overlaps, granular privacy controls, and anxiety-reducing passive discovery designed for neurodiverse users.</p>
-                        <a href="#" class="project-link" aria-label="View GT Buddy Finder project details">VIEW PROJECT</a>
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="LeetCode Visualizer redesign interface">💻</div>
+                        <div class="project-content">
+                            <span class="project-tag">Group Project</span>
+                            <h2 class="project-title">LeetCode Visualizer Redesign</h2>
+                            <p class="project-description">
+                                Reimagined the LeetCode experience to better support learners developing core programming skills. Created five new features including Progressive Learning Pathways, Real-World Explanations, Debugger Tool, Brainstorm Mode, and AI Chatbot Help. Features layered learning and motivation through interaction.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in LeetCode project">
+                                <span class="tech-tag" role="listitem">Figma</span>
+                                <span class="tech-tag" role="listitem">UX Design</span>
+                                <span class="tech-tag" role="listitem">Prototyping</span>
+                                <span class="tech-tag" role="listitem">User Personas</span>
+                            </div>
+                            <a href="#" class="project-link" aria-label="View LeetCode Visualizer prototype">
+                                View Prototype →
+                            </a>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="Notes to Self speculative design icon">
-                            <title>Multiverse timeline note-sending concept</title>
-                            <path d="M 15 15 Q 30 5 45 15" stroke="#00ffff" stroke-width="2" fill="none"/>
-                            <path d="M 15 30 Q 30 20 45 30" stroke="#ff00ff" stroke-width="2" fill="none"/>
-                            <path d="M 15 45 Q 30 35 45 45" stroke="#ffff00" stroke-width="2" fill="none"/>
-                            <circle cx="15" cy="15" r="3" fill="#00ffff"/>
-                            <circle cx="45" cy="15" r="3" fill="#00ffff"/>
-                            <circle cx="15" cy="30" r="3" fill="#ff00ff"/>
-                            <circle cx="45" cy="30" r="3" fill="#ff00ff"/>
-                            <circle cx="15" cy="45" r="3" fill="#ffff00"/>
-                            <circle cx="45" cy="45" r="3" fill="#ffff00"/>
-                            <rect x="25" y="25" width="10" height="12" fill="#fff" stroke="#000" stroke-width="1"/>
-                            <line x1="27" y1="28" x2="33" y2="28" stroke="#000" stroke-width="0.5"/>
-                            <line x1="27" y1="31" x2="33" y2="31" stroke="#000" stroke-width="0.5"/>
-                            <line x1="27" y1="34" x2="31" y2="34" stroke="#000" stroke-width="0.5"/>
-                        </svg>
-                        <h2 class="project-title">Notes to Self</h2>
-                        <p class="project-type">Figma • Speculative Design • Philosophical HCI</p>
-                        <p class="project-description">Conceptual app exploring identity and decision-making by allowing users to send emotional notes across alternate timelines to different versions of themselves. Investigates speculative interaction design, self-reflection interfaces, and the ethics of multiverse communication with accessible timeline navigation.</p>
-                        <a href="#" class="project-link" aria-label="View Notes to Self concept design">VIEW CONCEPT</a>
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="Space Safari educational game interface">🚀</div>
+                        <div class="project-content">
+                            <span class="project-tag">Educational Design</span>
+                            <h2 class="project-title">Space Safari</h2>
+                            <p class="project-description">
+                                Interactive Figma prototype teaching young students (ages 6–10) about planets in the solar system. Game-like design with orbiting planets, zoom interactions, fun facts, and quiz reinforcement. Evolved through user testing with three participants, incorporating feedback on UI flow, incentives, and engagement.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in Space Safari">
+                                <span class="tech-tag" role="listitem">Figma</span>
+                                <span class="tech-tag" role="listitem">Smart Animate</span>
+                                <span class="tech-tag" role="listitem">User Testing</span>
+                                <span class="tech-tag" role="listitem">Educational UX</span>
+                            </div>
+                            <a href="#" class="project-link" aria-label="View Space Safari prototype and user testing videos">
+                                View Prototype & User Tests →
+                            </a>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="ReCart sustainable fashion platform icon">
-                            <title>Secondhand clothing search aggregator</title>
-                            <circle cx="25" cy="20" r="8" fill="none" stroke="#00ff00" stroke-width="3"/>
-                            <circle cx="35" cy="20" r="8" fill="none" stroke="#00ffff" stroke-width="3"/>
-                            <rect x="15" y="28" width="30" height="20" rx="2" fill="none" stroke="#ff00ff" stroke-width="3"/>
-                            <path d="M 20 35 Q 30 32 40 35" stroke="#ffff00" stroke-width="2" fill="none"/>
-                            <circle cx="22" cy="40" r="2" fill="#00ff00"/>
-                            <circle cx="30" cy="40" r="2" fill="#00ffff"/>
-                            <circle cx="38" cy="40" r="2" fill="#ff00ff"/>
-                        </svg>
-                        <h2 class="project-title">ReCart</h2>
-                        <p class="project-type">React • Next.js • Node.js • Sustainable Tech</p>
-                        <p class="project-description">Sustainable secondhand clothing search platform aggregating listings across resale sources to reduce friction in finding affordable, eco-friendly fashion. Features clean browsing with accessible filtering, fast search flows, ARIA-compliant navigation, and mobile-responsive design prioritizing usability and discovery speed.</p>
-                        <a href="#" class="project-link" aria-label="View ReCart platform details">VIEW PROJECT</a>
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="GT Buddy Finder social connection tool">🤝</div>
+                        <div class="project-content">
+                            <span class="project-tag">Social Design</span>
+                            <h2 class="project-title">GT Buddy Finder</h2>
+                            <p class="project-description">
+                                Tool helping Georgia Tech students organically connect through shared classes, interests, and events. Features tiered social graph showing 1st, 2nd, and 3rd-degree connections, smart calendar highlighting overlapping RSVPs, and privacy controls. Designed to reduce social anxiety through passive discovery.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in GT Buddy Finder">
+                                <span class="tech-tag" role="listitem">UX Research</span>
+                                <span class="tech-tag" role="listitem">Figma</span>
+                                <span class="tech-tag" role="listitem">Social Design</span>
+                                <span class="tech-tag" role="listitem">Privacy</span>
+                            </div>
+                            <a href="#" class="project-link" aria-label="View GT Buddy Finder project details">
+                                View Project →
+                            </a>
+                        </div>
                     </article>
 
-                    <article class="project-card">
-                        <svg class="project-icon" viewBox="0 0 60 60" role="img" aria-label="SHOWAbility nonprofit website icon">
-                            <title>Inclusive performing arts nonprofit website</title>
-                            <path d="M 20 40 Q 30 20 40 40" stroke="#ff00ff" stroke-width="3" fill="none"/>
-                            <circle cx="20" cy="15" r="4" fill="#00ffff"/>
-                            <circle cx="30" cy="10" r="4" fill="#ffff00"/>
-                            <circle cx="40" cy="15" r="4" fill="#00ff00"/>
-                            <rect x="18" y="20" width="4" height="20" fill="#00ffff"/>
-                            <rect x="28" y="15" width="4" height="25" fill="#ffff00"/>
-                            <rect x="38" y="20" width="4" height="20" fill="#00ff00"/>
-                            <path d="M 15 45 L 45 45" stroke="#000" stroke-width="2"/>
-                            <circle cx="30" cy="35" r="8" fill="none" stroke="#ff00ff" stroke-width="2"/>
-                        </svg>
-                        <h2 class="project-title">SHOWAbility Website Remodel</h2>
-                        <p class="project-type">UX/UI Design • Content Strategy • Accessibility</p>
-                        <p class="project-description">Partnership with inclusive performing arts nonprofit to redesign website with modernized structure, WCAG 2.1 AA compliance, clearer navigation for donors and volunteers, enhanced storytelling, improved conversion flows, and accessible media content. Ongoing project focused on community engagement and digital inclusion.</p>
-                        <a href="#" class="project-link" aria-label="View SHOWAbility website remodel project">VIEW PROJECT</a>
+                    <article class="project-card" role="listitem">
+                        <div class="project-image" role="img" aria-label="Notes to Self speculative design concept">📝</div>
+                        <div class="project-content">
+                            <span class="project-tag">Speculative Design</span>
+                            <h2 class="project-title">Notes to Self</h2>
+                            <p class="project-description">
+                                Speculative app concept allowing users to send emotional notes across alternate timelines to different versions of themselves. Explores themes of identity and self-reflection, decision-making under uncertainty, and speculative interaction design as a thought experiment.
+                            </p>
+                            <div class="project-tech" role="list" aria-label="Technologies used in Notes to Self">
+                                <span class="tech-tag" role="listitem">Concept Design</span>
+                                <span class="tech-tag" role="listitem">Figma</span>
+                                <span class="tech-tag" role="listitem">Speculative UI</span>
+                                <span class="tech-tag" role="listitem">Philosophy</span>
+                            </div>
+                            <a href="#" class="project-link" aria-label="View Notes to Self concept">
+                                View Concept →
+                            </a>
+                        </div>
                     </article>
                 </div>
             </section>
+        <!-- ABOUT SECTION -->
+        <section id="about-section" class="content-section" aria-labelledby="about-heading">
+            <div class="about-content">
+                <h1 id="about-heading" class="section-title">About Me</h1>
 
-            <!-- ABOUT SECTION -->
-            <section id="about-section" class="content-section" aria-labelledby="about-heading">
-                <div class="about-content">
-                    <h1 id="about-heading" class="hero-title" style="font-size: 42px; margin-bottom: 30px;">ABOUT ME</h1>
-                    
-                    <div class="section-card">
-                        <h2>Who I Am</h2>
-                        <p>Hi! I'm Ashna Kasireddy, a fourth-year <strong>Computational Media</strong> major at Georgia Institute of Technology with a concentration in Human-Computer Interaction (HCI) and UI/UX Design. I'm passionate about creating user-centered digital experiences that bridge the gap between technology and people.</p>
-                        <p>My work focuses on designing <strong>intuitive, accessible interfaces</strong> that enhance user interactions through innovative solutions. I believe technology should be inclusive by design—built for everyone, regardless of ability, background, or context.</p>
-                    </div>
-
-                    <div class="section-card">
-                        <h2>Professional Experience</h2>
-                        <p><strong>Software Engineer Intern @ Corpay</strong> (May 2024 - Aug 2025)<br>
-                        Built React/Redux UI features including search, filters, modals, and pagination for managing 1,000+ internal records. Developed reusable, standards-compliant front-end components that improved design consistency and accelerated feature delivery across development teams. Leveraged data insights to optimize workflows and reduce user errors.</p>
-                        
-                        <p><strong>Student Reporter @ CNN Academy</strong> (Sep 2024 - Present)<br>
-                        Selected as 1 of 100 global participants for CNN's intensive multimedia program. Produced consumer-facing digital content while completing AI workshops on machine learning and predictive analytics. Applied UX/UI and HCI design principles to refine interactive experiences, boosting accessibility and retention across diverse digital channels.</p>
-                        
-                        <p><strong>CSSI Scholar @ Google</strong> (Jul 2022 - Aug 2022)<br>
-                        Completed exclusive 4-week program led by Google engineers, gaining hands-on experience in HTML, CSS, JavaScript, and front-end architecture through daily code reviews and collaborative projects.</p>
-                    </div>
-
-                    <div class="section-card">
-                        <h2>Technical Skills</h2>
-                        <ul>
-                            <li><strong>Languages:</strong> Java, Python, JavaScript, SQL, HTML/CSS</li>
-                            <li><strong>Frameworks & Libraries:</strong> React.js, Node.js, Spring Boot, Docker, Linux, TensorFlow, PyTorch</li>
-                            <li><strong>Developer Tools:</strong> VS Code, Android Studio, Google Cloud Platform, AWS, Postman, Git/GitHub</li>
-                            <li><strong>Design & Media:</strong> Figma, Adobe Creative Suite (Photoshop, Illustrator, Premiere Pro), Microsoft Excel</li>
-                            <li><strong>Accessibility:</strong> WCAG 2.1 compliance, ARIA implementation, screen reader testing, inclusive design patterns</li>
-                        </ul>
-                    </div>
-
-                    <div class="section-card">
-                        <h2>Design Philosophy</h2>
-                        <p>I approach every project with three core principles:</p>
-                        <ul>
-                            <li><strong>Accessibility First:</strong> Digital experiences should be usable by everyone. I design with WCAG standards, keyboard navigation, screen readers, and diverse user needs at the forefront.</li>
-                            <li><strong>User-Centered Design:</strong> Technology serves people, not the other way around. Through user research, testing, and iterative design, I ensure solutions actually solve real problems.</li>
-                            <li><strong>Thoughtful Innovation:</strong> Good design balances creativity with functionality. I explore new interaction patterns and technologies while maintaining usability and inclusivity.</li>
-                        </ul>
-                    </div>
-
-                    <div class="section-card">
-                        <h2>Education & Involvement</h2>
-                        <p><strong>Georgia Institute of Technology</strong> - B.S. in Computational Media (May 2026)<br>
-                        Concentrations in HCI and UI/UX | Major GPA: 3.9</p>
-                        
-                        <p><strong>Relevant Coursework:</strong> Data Structures and Algorithms, Objects and Design, Computer Organization and Programming, UI Design, Information Visualization, Visual Design, Information Design, Content Strategy</p>
-                        
-                        <p><strong>Campus Involvement:</strong> Zeta Tau Alpha, GT Hacks, GT Creatives, GT Design Club, Google Developer Student Club</p>
-                    </div>
-
-                    <div class="section-card">
-                        <h2>What's Next</h2>
-                        <p>I'm actively seeking opportunities in HCI research, UX design, and front-end development roles where I can continue creating accessible, user-centered digital experiences. I'm particularly interested in projects that:</p>
-                        <ul>
-                            <li>Advance accessibility in emerging technologies (AI, AR/VR, voice interfaces)</li>
-                            <li>Explore inclusive design for underserved communities</li>
-                            <li>Bridge the gap between complex systems and intuitive user experiences</li>
-                        </ul>
-                        <p>Let's build technology that works for everyone. 🚀</p>
-                    </div>
+                <div class="section-card">
+                    <h2>My Approach to Design</h2>
+                    <p>
+                        I believe great design is invisible—it removes barriers rather than creating them. My work centers on accessibility not as an afterthought, but as a fundamental design principle that makes products better for everyone.
+                    </p>
+                    <p>
+                        Through research, prototyping, and iterative testing, I create interfaces that are both beautiful and functional, ensuring that digital experiences work for users of all abilities.
+                    </p>
                 </div>
-            </section>
 
-            <!-- CONTACT SECTION -->
-            <section id="contact-section" class="content-section" aria-labelledby="contact-heading">
-                <div class="about-content">
-                    <h1 id="contact-heading" class="hero-title" style="font-size: 42px; margin-bottom: 30px;">GET IN TOUCH</h1>
-                    
-                    <div class="section-card">
-                        <h2>Let's Connect</h2>
-                        <p>I'm always excited to discuss accessibility, HCI research, design collaboration, or new opportunities in UX/UI and front-end development.</p>
-                        
-                        <div style="margin-top: 30px;">
-                            <p><strong>Email:</strong> <a href="mailto:akasireddy3@gatech.edu" style="color: var(--cyber-pink);">akasireddy3@gatech.edu</a></p>
-                            <p><strong>Phone:</strong> <a href="tel:678-907-6550" style="color: var(--cyber-cyan);">678-907-6550</a></p>
-                            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ashnakasireddy" target="_blank" rel="noopener noreferrer" style="color: var(--cyber-yellow);">linkedin.com/in/ashnakasireddy</a></p>
-                            <p><strong>GitHub:</strong> <a href="https://github.com/ashnakas" target="_blank" rel="noopener noreferrer" style="color: var(--matrix-green);">github.com/ashnakas</a></p>
+                <div class="section-card">
+                    <h2>Core Skills</h2>
+                    <ul role="list">
+                        <li><strong>Design:</strong> Figma, Sketch, Adobe Creative Suite, Prototyping, Wireframing, User Research, Usability Testing</li>
+                        <li><strong>Development:</strong> HTML/CSS, JavaScript, React, TypeScript, Node.js, Git, Responsive Design, Web Standards</li>
+                        <li><strong>Accessibility:</strong> WCAG 2.1 AAA, ARIA, Screen Reader Testing, Keyboard Navigation, Color Contrast, Inclusive Design</li>
+                        <li><strong>Research:</strong> User Interviews, Surveys, A/B Testing, Analytics, Journey Mapping, Persona Development</li>
+                    </ul>
+                </div>
+
+                <div class="section-card">
+                    <h2>Design Philosophy</h2>
+                    <ul role="list">
+                        <li><strong>Accessibility First:</strong> Designing for edge cases creates better solutions for everyone. I prioritize accessibility from the start, not as a compliance checkbox.</li>
+                        <li><strong>User-Centered Process:</strong> Real users, real feedback, real impact. I ground every design decision in research and testing with diverse user groups.</li>
+                        <li><strong>Thoughtful Innovation:</strong> Good design balances creativity with functionality. I explore new interaction patterns while maintaining usability and inclusivity.</li>
+                    </ul>
+                </div>
+
+                <div class="section-card">
+                    <h2>Education & Involvement</h2>
+                    <p>
+                        <strong>Georgia Institute of Technology</strong> - B.S. in Computational Media (May 2026)<br>
+                        Concentrations in HCI and UI/UX | Major GPA: 3.9
+                    </p>
+                    <p>
+                        <strong>Relevant Coursework:</strong> Data Structures and Algorithms, Objects and Design, Computer Organization and Programming, UI Design, Information Visualization, Visual Design, Information Design, Content Strategy
+                    </p>
+                    <p>
+                        <strong>Campus Involvement:</strong> Zeta Tau Alpha, GT Hacks, GT Creatives, GT Design Club, Google Developer Student Club
+                    </p>
+                </div>
+
+                <div class="section-card">
+                    <h2>What's Next</h2>
+                    <p>
+                        I'm actively seeking opportunities in HCI research, UX design, and front-end development roles where I can continue creating accessible, user-centered digital experiences. I'm particularly interested in projects that:
+                    </p>
+                    <ul role="list">
+                        <li>Advance accessibility in emerging technologies (AI, AR/VR, voice interfaces)</li>
+                        <li>Explore inclusive design for underserved communities</li>
+                        <li>Bridge the gap between complex systems and intuitive user experiences</li>
+                    </ul>
+                    <p>Let's build technology that works for everyone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact-section" class="content-section" aria-labelledby="contact-heading">
+            <div class="about-content">
+                <h1 id="contact-heading" class="section-title">Get In Touch</h1>
+
+                <div class="section-card">
+                    <h2>Let's Connect</h2>
+                    <p>
+                        I'm always excited to discuss accessibility, HCI research, design collaboration, or new opportunities in UX/UI and front-end development.
+                    </p>
+                </div>
+
+                <div class="contact-grid" role="list">
+                    <div class="contact-item" role="listitem">
+                        <div class="contact-icon" aria-hidden="true">✉️</div>
+                        <div class="contact-info">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">
+                                <a href="mailto:ashna@gatech.edu" aria-label="Email Ashna at ashna@gatech.edu">ashna@gatech.edu</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="section-card">
-                        <h2>Download Resume</h2>
-                        <p>Download my full resume to learn more about my experience, technical skills, projects, and accomplishments.</p>
-                        <a href="#" class="project-link" style="margin-top: 15px;" aria-label="Download Ashna Kasireddy resume PDF">📄 DOWNLOAD RESUME</a>
+                    <div class="contact-item" role="listitem">
+                        <div class="contact-icon" aria-hidden="true">📱</div>
+                        <div class="contact-info">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">
+                                <a href="tel:678-907-6550" aria-label="Call Ashna at 678-907-6550">678-907-6550</a>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="section-card">
-                        <h2>Open To</h2>
-                        <ul>
-                            <li><strong>Internships & Full-Time Roles:</strong> UX/UI Design, Front-End Development, HCI Research</li>
-                            <li><strong>Freelance Projects:</strong> Accessibility audits, website redesigns, design system creation</li>
-                            <li><strong>Collaboration:</strong> Research partnerships, open-source accessibility initiatives</li>
-                            <li><strong>Speaking & Workshops:</strong> Accessible design, inclusive UX, student tech talks</li>
-                        </ul>
+                    <div class="contact-item" role="listitem">
+                        <div class="contact-icon" aria-hidden="true">💼</div>
+                        <div class="contact-info">
+                            <div class="contact-label">LinkedIn</div>
+                            <div class="contact-value">
+                                <a href="https://linkedin.com/in/ashnakasireddy" target="_blank" rel="noopener noreferrer" aria-label="Visit Ashna's LinkedIn profile (opens in new tab)">linkedin.com/in/ashnakasireddy</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item" role="listitem">
+                        <div class="contact-icon" aria-hidden="true">💻</div>
+                        <div class="contact-info">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">
+                                <a href="https://github.com/ashnakas" target="_blank" rel="noopener noreferrer" aria-label="Visit Ashna's GitHub profile (opens in new tab)">github.com/ashnakas</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
-        </div>
 
-        <footer class="status-bar" role="contentinfo">
-            <div class="status-item">
-                <svg class="status-icon" viewBox="0 0 16 16" role="img" aria-label="Online status indicator">
-                    <title>Online - Portfolio is live</title>
-                    <circle cx="8" cy="8" r="6" fill="#00ff00"/>
-                    <circle cx="8" cy="8" r="3" fill="#39ff14"/>
-                </svg>
-                <span>ONLINE</span>
+                <div class="section-card">
+                    <h2>Download Resume</h2>
+                    <p>Download my full resume to learn more about my experience, technical skills, projects, and accomplishments.</p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 16px; display: inline-flex;" aria-label="Download Ashna Kasireddy resume PDF">
+                        <span aria-hidden="true">📄</span>
+                        Download Resume
+                    </a>
+                </div>
+
+                <div class="section-card">
+                    <h2>Open To</h2>
+                    <ul role="list">
+                        <li><strong>Internships & Full-Time Roles:</strong> UX/UI Design, Front-End Development, HCI Research</li>
+                        <li><strong>Freelance Projects:</strong> Accessibility audits, website redesigns, design system creation</li>
+                        <li><strong>Collaboration:</strong> Research partnerships, open-source accessibility initiatives</li>
+                        <li><strong>Speaking & Workshops:</strong> Accessible design, inclusive UX, student tech talks</li>
+                    </ul>
+                </div>
             </div>
-            <div class="status-item">
-                <span id="visitor-count" aria-label="Visitor counter">VISITORS: 1337</span>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" role="contentinfo">
+            <div class="footer-info">
+                <div class="footer-badge">
+                    <span class="status-dot" role="img" aria-label="Available for work"></span>
+                    <span>Available for Work</span>
+                </div>
+                <div class="footer-badge" aria-label="WCAG AAA Accessibility Compliant">
+                    <span>WCAG AAA</span>
+                </div>
             </div>
-            <div class="status-item">
-                <svg class="status-icon" viewBox="0 0 16 16" role="img" aria-label="WCAG AAA accessibility compliant">
-                    <title>WCAG AAA Accessibility Compliant</title>
-                    <rect width="16" height="16" fill="#0000aa"/>
-                    <text x="8" y="12" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">A</text>
-                </svg>
-                <span>WCAG AAA</span>
+            <div class="footer-info">
+                <span>© 2026 Ashna Kasireddy</span>
             </div>
         </footer>
-    </main>
+    </div>
 
     <script>
         // Navigation functionality
@@ -989,10 +1108,6 @@
                 }
             });
 
-            // Update address bar
-            const addressBar = document.getElementById('current-url');
-            addressBar.textContent = `https://portfolio.y2k/${sectionName}`;
-
             // Announce page change to screen readers
             const announcement = document.createElement('div');
             announcement.setAttribute('role', 'status');
@@ -1007,19 +1122,23 @@
             if (heading) {
                 heading.setAttribute('tabindex', '-1');
                 heading.focus();
-                heading.removeAttribute('tabindex');
+                setTimeout(() => heading.removeAttribute('tabindex'), 100);
             }
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Accessibility toggle
-        function togglePlainView() {
-            document.body.classList.toggle('plain-view');
+        // High contrast toggle
+        function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
             const button = document.querySelector('.accessibility-toggle');
-            const isPlain = document.body.classList.contains('plain-view');
+            const label = document.getElementById('contrast-label');
+            const isHighContrast = document.body.classList.contains('high-contrast');
             
-            button.textContent = isPlain ? '🎨 RETRO VIEW' : '👁️ PLAIN VIEW';
+            label.textContent = isHighContrast ? 'Normal View' : 'High Contrast';
             button.setAttribute('aria-label', 
-                isPlain ? 'Switch to retro futuristic view' : 'Switch to accessible plain view'
+                isHighContrast ? 'Switch to normal contrast mode' : 'Switch to high contrast mode'
             );
 
             // Announce mode change
@@ -1027,9 +1146,9 @@
             announcement.setAttribute('role', 'status');
             announcement.setAttribute('aria-live', 'polite');
             announcement.className = 'sr-only';
-            announcement.textContent = isPlain ? 
-                'Switched to plain accessible view with simplified design' : 
-                'Switched to retro futuristic view with enhanced visuals';
+            announcement.textContent = isHighContrast ? 
+                'Switched to high contrast mode for improved readability' : 
+                'Switched to normal contrast mode';
             document.body.appendChild(announcement);
             setTimeout(() => announcement.remove(), 1000);
         }
@@ -1044,27 +1163,63 @@
                 showSection(sections[index]);
             }
 
-            // Alt + P for plain view toggle
-            if (e.altKey && e.key.toLowerCase() === 'p') {
+            // Alt + C for contrast toggle
+            if (e.altKey && e.key.toLowerCase() === 'c') {
                 e.preventDefault();
-                togglePlainView();
+                toggleHighContrast();
             }
         });
 
-        // Animate visitor counter
-        let count = 1000;
-        setInterval(() => {
-            count += Math.floor(Math.random() * 3);
-            document.getElementById('visitor-count').textContent = `VISITORS: ${count}`;
-        }, 5000);
+        // Add animation on scroll for project cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Focus trap for window controls (optional decoration)
-        document.querySelectorAll('.window-control').forEach(control => {
-            control.addEventListener('click', (e) => {
-                e.preventDefault();
-                // These are decorative, so we prevent default and do nothing
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe project cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
             });
         });
+
+        // Skip to main content (accessibility enhancement)
+        const skipLink = document.createElement('a');
+        skipLink.href = '#home-section';
+        skipLink.className = 'sr-only';
+        skipLink.textContent = 'Skip to main content';
+        skipLink.style.cssText = `
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-accent);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        `;
+        skipLink.addEventListener('focus', function() {
+            this.style.top = '0';
+        });
+        skipLink.addEventListener('blur', function() {
+            this.style.top = '-40px';
+        });
+        document.body.insertBefore(skipLink, document.body.firstChild);
     </script>
 </body>
 </html>
