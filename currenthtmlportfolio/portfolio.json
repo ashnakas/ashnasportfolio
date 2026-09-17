@@ -1,0 +1,17 @@
+{
+  "name": "Ashna Kasireddy",
+  "role": "AI-forward product designer and developer",
+  "tagline": "Creating intuitive solutions for humans and agents alike.",
+  "location": "Atlanta, GA",
+  "contact": {
+    "email": "akasireddy3@gatech.edu",
+    "linkedin": "https://linkedin.com/in/ashnakasireddy"
+  },
+  "capabilities": ["Product design", "Interaction design", "Framer", "Figma", "Accessibility", "Visual systems", "Front-end development", "AI prototyping", "Experience design"],
+  "projects": [
+    { "name": "ReCart", "url": "index.html#recart", "role": "Product Designer + Front-end", "status": "Working prototype", "contribution": "Unified browsing model, visual system, and React/Next.js implementation." },
+    { "name": "SHOWAbility", "url": "index.html#showability", "role": "UX/UI + Digital Strategy", "contribution": "Accessibility audit, information architecture, content strategy, and visual guidelines." },
+    { "name": "ReelDeal", "url": "index.html#reeldeal", "role": "Product Designer", "status": "Concept / prototype", "contribution": "AI-assisted seat-selection recommendation concept." },
+    { "name": "CNN Academy", "url": "index.html#cnn", "role": "Simulation Writer + Host", "contribution": "Scenario writing, character performance, and information sequencing in a live journalism simulation." }
+  ]
+}
