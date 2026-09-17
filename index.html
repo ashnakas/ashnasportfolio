@@ -1,1233 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashna Kasireddy - Product Designer & Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            /* Color System */
-            --color-bg: #FAFAFA;
-            --color-surface: #FFFFFF;
-            --color-text-primary: #0A0A0A;
-            --color-text-secondary: #525252;
-            --color-text-tertiary: #737373;
-            --color-accent: #3B82F6;
-            --color-accent-hover: #2563EB;
-            --color-border: #E5E5E5;
-            --color-success: #10B981;
-            --color-warning: #F59E0B;
-            --color-error: #EF4444;
-            
-            /* Typography */
-            --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-mono: 'Space Mono', 'Courier New', monospace;
-            
-            /* Spacing */
-            --space-xs: 4px;
-            --space-sm: 8px;
-            --space-md: 16px;
-            --space-lg: 24px;
-            --space-xl: 32px;
-            --space-2xl: 48px;
-            --space-3xl: 64px;
-            
-            /* Border Radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            --radius-full: 9999px;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
-            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
-            
-            /* Transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Screen Reader Only */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            background-color: var(--color-bg);
-            color: var(--color-text-primary);
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* Accessibility Toggle */
-        .accessibility-toggle {
-            position: fixed;
-            top: var(--space-lg);
-            right: var(--space-lg);
-            z-index: 10000;
-            background: var(--color-surface);
-            border: 2px solid var(--color-border);
-            padding: var(--space-sm) var(--space-md);
-            cursor: pointer;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            border-radius: var(--radius-full);
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-base);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
-
-        .accessibility-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--color-accent);
-        }
-
-        .accessibility-toggle:focus {
-            outline: 3px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: var(--space-lg);
-        }
-
-        /* Navigation */
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-xl) 0;
-            margin-bottom: var(--space-2xl);
-            position: sticky;
-            top: 0;
-            background: var(--color-bg);
-            z-index: 100;
-            animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            text-decoration: none;
-            font-family: var(--font-mono);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            transition: color var(--transition-base);
-        }
-
-        .logo:hover {
-            color: var(--color-accent);
-        }
-
-        .logo::before {
-            content: '●';
-            color: var(--color-success);
-            font-size: 12px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--space-md);
-            list-style: none;
-        }
-
-        .nav-button {
-            background: transparent;
-            border: none;
-            padding: var(--space-sm) var(--space-md);
-            cursor: pointer;
-            font-family: var(--font-mono);
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-base);
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-button:hover {
-            color: var(--color-text-primary);
-            background: var(--color-surface);
-        }
-
-        .nav-button.active {
-            color: var(--color-accent);
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .nav-button:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: var(--space-3xl) 0;
-            margin-bottom: var(--space-3xl);
-        }
-
-        .hero-label {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--color-accent);
-            background: rgba(59, 130, 246, 0.1);
-            padding: var(--space-xs) var(--space-md);
-            border-radius: var(--radius-full);
-            margin-bottom: var(--space-lg);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .hero-title {
-            font-size: clamp(40px, 6vw, 72px);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: var(--space-lg);
-            color: var(--color-text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .hero-description {
-            font-size: clamp(18px, 2vw, 24px);
-            color: var(--color-text-secondary);
-            max-width: 700px;
-            margin-bottom: var(--space-2xl);
-            line-height: 1.5;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: var(--space-md);
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-md) var(--space-xl);
-            font-family: var(--font-mono);
-            font-size: 14px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: var(--radius-md);
-            transition: all var(--transition-base);
-            cursor: pointer;
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: var(--color-accent);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary:hover {
-            background: var(--color-accent-hover);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background: var(--color-surface);
-            color: var(--color-text-primary);
-            border-color: var(--color-border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn:focus {
-            outline: 3px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        /* Project Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: var(--space-xl);
-            margin-bottom: var(--space-3xl);
-        }
-
-        .project-card {
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-slow);
-            border: 1px solid var(--color-border);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--color-accent);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-slow);
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-card:focus-within {
-            outline: 3px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            background: var(--color-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 64px;
-            transition: transform var(--transition-slow);
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.05);
-        }
-
-        .project-content {
-            padding: var(--space-lg);
-        }
-
-        .project-tag {
-            display: inline-block;
-            font-family: var(--font-mono);
-            font-size: 11px;
-            font-weight: 700;
-            color: var(--color-accent);
-            background: rgba(59, 130, 246, 0.1);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--radius-sm);
-            margin-bottom: var(--space-sm);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: var(--space-sm);
-            color: var(--color-text-primary);
-        }
-
-        .project-description {
-            font-size: 15px;
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-md);
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-        }
-
-        .tech-tag {
-            font-family: var(--font-mono);
-            font-size: 11px;
-            color: var(--color-text-tertiary);
-            background: var(--color-bg);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--radius-sm);
-        }
-
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-lg);
-            margin: var(--space-3xl) 0;
-            padding: var(--space-2xl);
-            background: var(--color-surface);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--color-border);
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: var(--space-lg);
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--color-accent);
-            font-family: var(--font-mono);
-            display: block;
-            margin-bottom: var(--space-sm);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-        }
-
-        .section-title {
-            font-size: clamp(32px, 4vw, 48px);
-            font-weight: 700;
-            margin-bottom: var(--space-xl);
-            color: var(--color-text-primary);
-            letter-spacing: -0.02em;
-        }
-
-        .section-card {
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            padding: var(--space-xl);
-            margin-bottom: var(--space-lg);
-            transition: all var(--transition-base);
-        }
-
-        .section-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: var(--color-accent);
-        }
-
-        .section-card h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: var(--space-md);
-            color: var(--color-text-primary);
-        }
-
-        .section-card p {
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-md);
-            line-height: 1.7;
-        }
-
-        .section-card ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .section-card li {
-            color: var(--color-text-secondary);
-            margin-bottom: var(--space-md);
-            padding-left: var(--space-lg);
-            position: relative;
-            line-height: 1.7;
-        }
-
-        .section-card li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-            font-weight: 700;
-        }
-
-        .section-card strong {
-            color: var(--color-text-primary);
-            font-weight: 600;
-        }
-
-        .section-card a {
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color var(--transition-base);
-            border-bottom: 2px solid transparent;
-        }
-
-        .section-card a:hover {
-            color: var(--color-accent-hover);
-            border-bottom-color: var(--color-accent-hover);
-        }
-
-        .section-card a:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            padding: var(--space-lg);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            transition: all var(--transition-base);
-        }
-
-        .contact-item:hover {
-            border-color: var(--color-accent);
-            box-shadow: var(--shadow-md);
-            transform: translateX(4px);
-        }
-
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-label {
-            font-size: 12px;
-            color: var(--color-text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            margin-bottom: var(--space-xs);
-        }
-
-        .contact-value {
-            font-size: 16px;
-            color: var(--color-text-primary);
-            font-weight: 500;
-        }
-
-        .contact-value a {
-            color: var(--color-text-primary);
-            text-decoration: none;
-            transition: color var(--transition-base);
-        }
-
-        .contact-value a:hover {
-            color: var(--color-accent);
-        }
-
-        .contact-value a:focus {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            border-radius: var(--radius-sm);
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: var(--space-3xl);
-            padding: var(--space-xl) 0;
-            border-top: 1px solid var(--color-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-
-        .footer-info {
-            display: flex;
-            align-items: center;
-            gap: var(--space-lg);
-            font-size: 13px;
-            color: var(--color-text-secondary);
-            font-family: var(--font-mono);
-        }
-
-        .footer-badge {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xs) var(--space-sm);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--color-success);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: var(--space-md);
-            }
-
-            .nav {
-                flex-direction: column;
-                gap: var(--space-md);
-                align-items: flex-start;
-            }
-
-            .nav-links {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: var(--space-sm);
-            }
-
-            .hero {
-                padding: var(--space-xl) 0;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .footer {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .accessibility-toggle {
-                top: var(--space-md);
-                right: var(--space-md);
-                font-size: 11px;
-            }
-        }
-
-        /* High Contrast Mode */
-        body.high-contrast {
-            --color-bg: #FFFFFF;
-            --color-surface: #FFFFFF;
-            --color-text-primary: #000000;
-            --color-text-secondary: #000000;
-            --color-text-tertiary: #000000;
-            --color-border: #000000;
-        }
-
-        body.high-contrast .project-card,
-        body.high-contrast .section-card,
-        body.high-contrast .contact-item {
-            border: 2px solid #000000;
-        }
-
-        body.high-contrast .btn-secondary {
-            border: 2px solid #000000;
-        }
-
-        /* Focus Visible */
-        *:focus-visible {
-            outline: 3px solid var(--color-accent);
-            outline-offset: 3px;
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <title>Ashna Kasireddy | AI-Forward Product Designer &amp; Developer</title>
+  <meta name="description" content="AI-forward product designer and developer creating intuitive solutions for humans and agents alike. Selected work by Ashna Kasireddy.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Cpath d='M16 46 29 16h7l13 30h-9l-2-6H26l-2 6Zm13-13h7l-3.5-10Z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Newsreader:ital,wght@1,400&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="alternate" type="application/json" href="portfolio.json" title="Ashna Kasireddy structured profile">
 </head>
 <body>
-    <!-- Accessibility Toggle -->
-    <button class="accessibility-toggle" onclick="toggleHighContrast()" aria-label="Toggle high contrast mode">
-        <span aria-hidden="true">◐</span>
-        <span id="contrast-label">High Contrast</span>
-    </button>
-
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav" role="navigation" aria-label="Main navigation">
-            <a href="#" class="logo" aria-label="Ashna Kasireddy - Home">AK</a>
-            <ul class="nav-links">
-                <li><button class="nav-button active" data-section="home" onclick="showSection('home')" aria-label="Navigate to home">Home</button></li>
-                <li><button class="nav-button" data-section="projects" onclick="showSection('projects')" aria-label="Navigate to projects">Projects</button></li>
-                <li><button class="nav-button" data-section="about" onclick="showSection('about')" aria-label="Navigate to about">About</button></li>
-                <li><button class="nav-button" data-section="contact" onclick="showSection('contact')" aria-label="Navigate to contact">Contact</button></li>
-            </ul>
-        </nav>
-
-        <!-- HOME SECTION -->
-        <section id="home-section" class="content-section active" aria-labelledby="home-heading">
-            <div class="hero">
-                <span class="hero-label" role="text">Product Designer & Developer</span>
-                <h1 id="home-heading" class="hero-title">
-                    Designing inclusive digital experiences that work for everyone
-                </h1>
-                <p class="hero-description">
-                    I'm Ashna Kasireddy, a product designer and front-end developer passionate about creating accessible, user-centered interfaces. Currently studying Computational Media at Georgia Tech with a focus on HCI and UI/UX.
-                </p>
-                <div class="hero-cta">
-                    <button class="btn btn-primary" onclick="showSection('projects')" aria-label="View my projects">
-                        View Projects
-                        <span aria-hidden="true">→</span>
-                    </button>
-                    <button class="btn btn-secondary" onclick="showSection('contact')" aria-label="Get in touch">
-                        Get in Touch
-                    </button>
-                </div>
-            </div>
-
-            <div class="stats" role="region" aria-label="Key statistics">
-                <div class="stat-item">
-                    <span class="stat-number" aria-label="3.9 GPA">3.9</span>
-                    <span class="stat-label">Major GPA</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" aria-label="2026">2026</span>
-                    <span class="stat-label">Graduation Year</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" aria-label="AAA WCAG">AAA</span>
-                    <span class="stat-label">WCAG Compliant</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" aria-label="5 plus organizations">5+</span>
-                    <span class="stat-label">Organizations</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects-section" class="content-section" aria-labelledby="projects-heading">
-            <h1 id="projects-heading" class="section-title">Featured Projects</h1>
-        
-            <div class="projects-grid" role="list" aria-label="Project portfolio">
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="ReCart sustainable fashion platform interface">🛍️</div>
-                        <div class="project-content">
-                            <span class="project-tag">Full Stack</span>
-                            <h2 class="project-title">ReCart</h2>
-                            <p class="project-description">
-                                Sustainable secondhand clothing search platform that aggregates listings across resale sources to reduce friction in finding affordable, eco-friendly fashion. Designed and built clean browsing experience with filtering and search flows focused on usability and fast discovery.
-                            </p>
-                            <div class="project-tech" role="list" aria-label="Technologies used in ReCart">
-                                <span class="tech-tag" role="listitem">React</span>
-                                <span class="tech-tag" role="listitem">Next.js</span>
-                                <span class="tech-tag" role="listitem">Node.js</span>
-                                <span class="tech-tag" role="listitem">UX/UI Design</span>
-                                <span class="tech-tag" role="listitem">Figma</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="SHOWAbility nonprofit website redesign">🎭</div>
-                        <div class="project-content">
-                            <span class="project-tag">UX/UI Design</span>
-                            <h2 class="project-title">SHOWAbility Website Remodel</h2>
-                            <p class="project-description">
-                                Partnered with SHOWAbility, an inclusive performing arts nonprofit, to redesign and modernize their website structure for clearer navigation, accessibility, and stronger storytelling. Created updated designs and page layouts to improve engagement and conversion for donors and volunteers.
-                            </p>
-                            <div class="project-tech" role="list" aria-label="Technologies used in SHOWAbility project">
-                                <span class="tech-tag" role="listitem">Figma</span>
-                                <span class="tech-tag" role="listitem">UX Research</span>
-                                <span class="tech-tag" role="listitem">Content Strategy</span>
-                                <span class="tech-tag" role="listitem">Accessibility</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="PerceptionCorp capstone project">🧠</div>
-                        <div class="project-content">
-                          <span class="project-tag">Capstone</span>
-                          <h2 class="project-title">PerceptionCorp</h2>
-                          <p class="project-description">
-                            Built a capstone experience exploring multimodal perception and interaction—translating research into a clear, user-facing product story. PerceptionCorp is a design-future project that uses speculative worldbuilding to examine the social consequences of monetized augmented reality.
-                          </p>
-                      
-                          <div class="project-tech" role="list" aria-label="Technologies and skills used in PerceptionCorp">
-                            <span class="tech-tag" role="listitem">Product Thinking</span>
-                            <span class="tech-tag" role="listitem">UX Design</span>
-                            <span class="tech-tag" role="listitem">Research</span>
-                            <span class="tech-tag" role="listitem">Prototyping</span>
-                          </div>
-                      
-                          <a
-                            href="https://ashnakas.github.io/capstone/how-it-works.html"
-                            class="project-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="View PerceptionCorp capstone (opens in new tab)"
-                          >
-                            View Project →
-                          </a>
-                        </div>
-                      </article>
-                      
-
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="Space Safari educational game interface">🚀</div>
-                        <div class="project-content">
-                            <span class="project-tag">Educational Design</span>
-                            <h2 class="project-title">Space Safari</h2>
-                            <p class="project-description">
-                                Interactive Figma prototype teaching young students (ages 6–10) about planets in the solar system. Game-like design with orbiting planets, zoom interactions, fun facts, and quiz reinforcement. Evolved through user testing with three participants, incorporating feedback on UI flow, incentives, and engagement.
-                            </p>
-                            <div class="project-tech" role="list" aria-label="Technologies used in Space Safari">
-                                <span class="tech-tag" role="listitem">Figma</span>
-                                <span class="tech-tag" role="listitem">Smart Animate</span>
-                                <span class="tech-tag" role="listitem">User Testing</span>
-                                <span class="tech-tag" role="listitem">Educational UX</span>
-                            </div>
-                            <a href="#" class="project-link" aria-label="View Space Safari prototype and user testing videos">
-                                View Prototype & User Tests →
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="GT Buddy Finder social connection tool">🤝</div>
-                        <div class="project-content">
-                            <span class="project-tag">Social Design</span>
-                            <h2 class="project-title">GT Buddy Finder</h2>
-                            <p class="project-description">
-                                Tool helping Georgia Tech students organically connect through shared classes, interests, and events. Features tiered social graph showing 1st, 2nd, and 3rd-degree connections, smart calendar highlighting overlapping RSVPs, and privacy controls. Designed to reduce social anxiety through passive discovery.
-                            </p>
-                            <div class="project-tech" role="list" aria-label="Technologies used in GT Buddy Finder">
-                                <span class="tech-tag" role="listitem">UX Research</span>
-                                <span class="tech-tag" role="listitem">Figma</span>
-                                <span class="tech-tag" role="listitem">Social Design</span>
-                                <span class="tech-tag" role="listitem">Privacy</span>
-                            </div>
-                            <a href="#" class="project-link" aria-label="View GT Buddy Finder project details">
-                                View Project →
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="project-card" role="listitem">
-                        <div class="project-image" role="img" aria-label="Notes to Self speculative design concept">📝</div>
-                        <div class="project-content">
-                            <span class="project-tag">Speculative Design</span>
-                            <h2 class="project-title">Notes to Self</h2>
-                            <p class="project-description">
-                                Speculative app concept allowing users to send emotional notes across alternate timelines to different versions of themselves. Explores themes of identity and self-reflection, decision-making under uncertainty, and speculative interaction design as a thought experiment.
-                            </p>
-                            <div class="project-tech" role="list" aria-label="Technologies used in Notes to Self">
-                                <span class="tech-tag" role="listitem">Concept Design</span>
-                                <span class="tech-tag" role="listitem">Figma</span>
-                                <span class="tech-tag" role="listitem">Speculative UI</span>
-                                <span class="tech-tag" role="listitem">Philosophy</span>
-                            </div>
-                            <a href="#" class="project-link" aria-label="View Notes to Self concept">
-                                View Concept →
-                            </a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-        <!-- ABOUT SECTION -->
-        <section id="about-section" class="content-section" aria-labelledby="about-heading">
-            <div class="about-content">
-                <h1 id="about-heading" class="section-title">About Me</h1>
-
-                <div class="section-card">
-                    <h2>My Approach to Design</h2>
-                    <p>
-                        I believe great design is invisible—it removes barriers rather than creating them. My work centers on accessibility not as an afterthought, but as a fundamental design principle that makes products better for everyone.
-                    </p>
-                    <p>
-                        Through research, prototyping, and iterative testing, I create interfaces that are both beautiful and functional, ensuring that digital experiences work for users of all abilities.
-                    </p>
-                </div>
-
-                <div class="section-card">
-                    <h2>Core Skills</h2>
-                    <ul role="list">
-                        <li><strong>Design:</strong> Figma, Sketch, Adobe Creative Suite, Prototyping, Wireframing, User Research, Usability Testing</li>
-                        <li><strong>Development:</strong> HTML/CSS, JavaScript, React, TypeScript, Node.js, Git, Responsive Design, Web Standards</li>
-                        <li><strong>Accessibility:</strong> WCAG 2.1 AAA, ARIA, Screen Reader Testing, Keyboard Navigation, Color Contrast, Inclusive Design</li>
-                        <li><strong>Research:</strong> User Interviews, Surveys, A/B Testing, Analytics, Journey Mapping, Persona Development</li>
-                    </ul>
-                </div>
-
-                <div class="section-card">
-                    <h2>Design Philosophy</h2>
-                    <ul role="list">
-                        <li><strong>Accessibility First:</strong> Designing for edge cases creates better solutions for everyone. I prioritize accessibility from the start, not as a compliance checkbox.</li>
-                        <li><strong>User-Centered Process:</strong> Real users, real feedback, real impact. I ground every design decision in research and testing with diverse user groups.</li>
-                        <li><strong>Thoughtful Innovation:</strong> Good design balances creativity with functionality. I explore new interaction patterns while maintaining usability and inclusivity.</li>
-                    </ul>
-                </div>
-
-                <div class="section-card">
-                    <h2>Education & Involvement</h2>
-                    <p>
-                        <strong>Georgia Institute of Technology</strong> - B.S. in Computational Media (May 2026)<br>
-                        Concentrations in HCI and UI/UX | Major GPA: 3.9
-                    </p>
-                    <p>
-                        <strong>Relevant Coursework:</strong> Data Structures and Algorithms, Objects and Design, Computer Organization and Programming, UI Design, Information Visualization, Visual Design, Information Design, Content Strategy
-                    </p>
-                    <p>
-                        <strong>Campus Involvement:</strong> Zeta Tau Alpha, GT Hacks, GT Creatives, GT Design Club, Google Developer Student Club
-                    </p>
-                </div>
-
-                <div class="section-card">
-                    <h2>What's Next</h2>
-                    <p>
-                        I'm actively seeking opportunities in HCI research, UX design, and front-end development roles where I can continue creating accessible, user-centered digital experiences. I'm particularly interested in projects that:
-                    </p>
-                    <ul role="list">
-                        <li>Advance accessibility in emerging technologies (AI, AR/VR, voice interfaces)</li>
-                        <li>Explore inclusive design for underserved communities</li>
-                        <li>Bridge the gap between complex systems and intuitive user experiences</li>
-                    </ul>
-                    <p>Let's build technology that works for everyone.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact-section" class="content-section" aria-labelledby="contact-heading">
-            <div class="about-content">
-                <h1 id="contact-heading" class="section-title">Get In Touch</h1>
-
-                <div class="section-card">
-                    <h2>Let's Connect</h2>
-                    <p>
-                        I'm always excited to discuss accessibility, HCI research, design collaboration, or new opportunities in UX/UI and front-end development.
-                    </p>
-                </div>
-
-                <div class="contact-grid" role="list">
-                    <div class="contact-item" role="listitem">
-                        <div class="contact-icon" aria-hidden="true">✉️</div>
-                        <div class="contact-info">
-                            <div class="contact-label">Email</div>
-                            <div class="contact-value">
-                                <a href="mailto:ashna@gatech.edu" aria-label="Email Ashna at ashna@gatech.edu">ashna@gatech.edu</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item" role="listitem">
-                        <div class="contact-icon" aria-hidden="true">📱</div>
-                        <div class="contact-info">
-                            <div class="contact-label">Phone</div>
-                            <div class="contact-value">
-                                <a href="tel:678-907-6550" aria-label="Call Ashna at 678-907-6550">678-907-6550</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item" role="listitem">
-                        <div class="contact-icon" aria-hidden="true">💼</div>
-                        <div class="contact-info">
-                            <div class="contact-label">LinkedIn</div>
-                            <div class="contact-value">
-                                <a href="https://linkedin.com/in/ashnakasireddy" target="_blank" rel="noopener noreferrer" aria-label="Visit Ashna's LinkedIn profile (opens in new tab)">linkedin.com/in/ashnakasireddy</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-item" role="listitem">
-                        <div class="contact-icon" aria-hidden="true">💻</div>
-                        <div class="contact-info">
-                            <div class="contact-label">GitHub</div>
-                            <div class="contact-value">
-                                <a href="https://github.com/ashnakas" target="_blank" rel="noopener noreferrer" aria-label="Visit Ashna's GitHub profile (opens in new tab)">github.com/ashnakas</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-card">
-                    <h2>Download Resume</h2>
-                    <p>Download my full resume to learn more about my experience, technical skills, projects, and accomplishments.</p>
-                    <a href="#" class="btn btn-primary" style="margin-top: 16px; display: inline-flex;" aria-label="Download Ashna Kasireddy resume PDF">
-                        <span aria-hidden="true">📄</span>
-                        Download Resume
-                    </a>
-                </div>
-
-                <div class="section-card">
-                    <h2>Open To</h2>
-                    <ul role="list">
-                        <li><strong>Internships & Full-Time Roles:</strong> UX/UI Design, Front-End Development, HCI Research</li>
-                        <li><strong>Freelance Projects:</strong> Accessibility audits, website redesigns, design system creation</li>
-                        <li><strong>Collaboration:</strong> Research partnerships, open-source accessibility initiatives</li>
-                        <li><strong>Speaking & Workshops:</strong> Accessible design, inclusive UX, student tech talks</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer" role="contentinfo">
-            <div class="footer-info">
-                <div class="footer-badge">
-                    <span class="status-dot" role="img" aria-label="Available for work"></span>
-                    <span>Available for Work</span>
-                </div>
-                <div class="footer-badge" aria-label="WCAG AAA Accessibility Compliant">
-                    <span>WCAG AAA</span>
-                </div>
-            </div>
-            <div class="footer-info">
-                <span>© 2026 Ashna Kasireddy</span>
-            </div>
-        </footer>
+  <a class="skip" href="#work">Skip to work</a>
+  <header class="navigation">
+    <a class="brand" href="#top" aria-label="Ashna Kasireddy home">AK<sup>&reg;</sup></a>
+    <div class="nav-status">
+      <span class="nav-note">Designer / Developer</span>
+      <span class="status-chip"><i class="status-dot" aria-hidden="true"></i>Atlanta &mdash; <time id="localTime">--:--</time> ET</span>
     </div>
+    <nav aria-label="Main navigation">
+      <a href="#work">Work <sup>04</sup></a><a href="#proof">Proof</a><a href="#about">About</a>
+      <a class="nav-contact" href="mailto:akasireddy3@gatech.edu">Let's talk <span aria-hidden="true">&nearr;</span></a>
+    </nav>
+  </header>
 
-    <script>
-        // Navigation functionality
-        function showSection(sectionName) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+  <main id="top">
+    <section class="hero" aria-labelledby="name">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-spine" aria-hidden="true"><span>Portfolio &mdash; Ashna Kasireddy &mdash; 2026</span></div>
+      <div class="wrap hero-inner">
+        <div class="hero-kicker"><span>Available for product design + creative technology roles</span><span>Portfolio / 2026</span></div>
+        <div class="hero-headline">
+          <span class="hero-ghost" aria-hidden="true">04</span>
+          <h1 id="name"><span>Human instinct.</span><em>Machine fluency.</em></h1>
+        </div>
+        <div class="hero-footer">
+          <p class="tagline">I'm Ashna, an AI-forward product designer and developer creating intuitive solutions for humans and agents alike.</p>
+          <div class="hero-aside"><p>I turn ambiguous ideas into clear systems, expressive interfaces, and working prototypes.</p><a class="arrow-link" href="#work">Enter the showcase <span aria-hidden="true">&darr;</span></a></div>
+        </div>
+        <div class="perspective" data-perspective="human">
+          <fieldset class="segmented"><legend class="sr-only">Portfolio perspective</legend><label><input type="radio" name="perspective" value="human" checked><span>Human view</span></label><label><input type="radio" name="perspective" value="agent"><span>Agent view</span></label></fieldset>
+          <div class="perspective-output" aria-live="polite"><p id="perspective-copy">Four projects. The problem, the move, and the proof.</p><a id="perspective-link" href="#recart">Start with ReCart &nearr;</a></div>
+        </div>
+      </div>
+    </section>
 
-            // Show selected section
-            const targetSection = document.getElementById(sectionName + '-section');
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+    <section class="showcase wrap" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><div><span class="section-number">01</span><h2 id="work-title">Selected work</h2></div><p>Different problems. Different visual worlds. One throughline: make the decision easier.</p></div>
+      <div class="showcase-grid">
+        <a class="showcase-card recart-card" href="#recart">
+          <div class="card-top"><span>01 / Product + code</span><span>Working prototype</span></div>
+          <img src="assets/recart.jpg" alt="ReCart unified secondhand shopping interface" width="1500" height="955">
+          <div class="card-title"><h3>ReCart</h3><span aria-hidden="true">&nearr;</span></div>
+          <div class="card-reveal"><strong>What changed</strong><p>I turned fragmented marketplace browsing into one consistent search and filtering flow.</p><span>Figma / React / Next.js / Product design</span></div>
+        </a>
+        <a class="showcase-card reeldeal-card" href="#reeldeal">
+          <div class="card-top"><span>02 / AI decision UX</span><span>Concept + prototype</span></div>
+          <div class="reel-visual" aria-hidden="true"><span class="screen-line">SCREEN</span><div class="mini-seats"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="mini-chosen"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="seat-callout"><small>BEST MATCH</small><strong>B4</strong><span>$23 / central view</span></div></div>
+          <div class="card-title"><h3>ReelDeal</h3><span aria-hidden="true">&nearr;</span></div>
+          <div class="card-reveal"><strong>What changed</strong><p>I gave AI one useful job: explain the trade-off behind a seat recommendation.</p><span>Recommendation UX / Prototyping / AI interaction</span></div>
+        </a>
+        <a class="showcase-card showability-card" href="#showability">
+          <div class="card-top"><span>03 / Accessible systems</span><span>UX + brand</span></div>
+          <img src="assets/showability-system.png" alt="SHOWAbility graphic identity and accessible color system">
+          <div class="show-wordmark" aria-hidden="true">SHOW<em>Ability.</em></div>
+          <div class="card-title"><h3>SHOWAbility</h3><span aria-hidden="true">&nearr;</span></div>
+          <div class="card-reveal"><strong>What changed</strong><p>I made accessibility actionable and left the team with a system they could own.</p><span>WCAG / IA / Content / Design systems</span></div>
+        </a>
+        <a class="showcase-card cnn-card" href="#cnn">
+          <div class="card-top"><span>04 / Live experience</span><span>100+ participants</span></div>
+          <div class="cnn-visual" aria-hidden="true"><span>BREAKING</span><strong>What do you publish when the story will not wait?</strong><div><i>01</i> SOURCE <i>02</i> VERIFY <i>03</i> DECIDE</div></div>
+          <div class="card-title"><h3>CNN Academy</h3><span aria-hidden="true">&nearr;</span></div>
+          <div class="card-reveal"><strong>What changed</strong><p>I designed the pressure, timing, and information flow behind a live journalism simulation.</p><span>Experience design / Writing / Facilitation</span></div>
+        </a>
+      </div>
+    </section>
 
-            // Update active button
-            const buttons = document.querySelectorAll('.nav-button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-                if (button.dataset.section === sectionName) {
-                    button.classList.add('active');
-                }
-            });
+    <section class="proof-band" id="proof" aria-labelledby="proof-title">
+      <div class="wrap">
+        <div class="section-heading light-heading"><div><span class="section-number">02</span><h2 id="proof-title">What I actually do</h2></div><p>The useful intersection of product thinking, visual craft, and enough code to make the idea real.</p></div>
+        <div class="proof-list">
+          <article><span>01</span><h3>Find the real problem</h3><p>Research, audit, map the friction, and turn ambiguity into a clear product question.</p></article>
+          <article><span>02</span><h3>Design the system</h3><p>Build flows, interactions, accessible patterns, and a visual language that holds together.</p></article>
+          <article><span>03</span><h3>Make it tangible</h3><p>Prototype in Figma and Framer, then work in React and Next.js when code is the fastest truth test.</p></article>
+          <article><span>04</span><h3>Explain the why</h3><p>Document decisions so engineers, stakeholders, and the next designer can move with confidence.</p></article>
+        </div>
+        <div class="skill-marquee" aria-label="Skills and tools">
+          <div class="skill-track">
+            <div class="skill-set"><span>Product Design</span><i></i><span>Framer</span><i></i><span>Figma</span><i></i><span>React</span><i></i><span>Next.js</span><i></i><span>Accessibility</span><i></i><span>AI Prototyping</span><i></i></div>
+            <div class="skill-set" aria-hidden="true"><span>Product Design</span><i></i><span>Framer</span><i></i><span>Figma</span><i></i><span>React</span><i></i><span>Next.js</span><i></i><span>Accessibility</span><i></i><span>AI Prototyping</span><i></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            // Announce page change to screen readers
-            const announcement = document.createElement('div');
-            announcement.setAttribute('role', 'status');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.className = 'sr-only';
-            announcement.textContent = `Navigated to ${sectionName} page`;
-            document.body.appendChild(announcement);
-            setTimeout(() => announcement.remove(), 1000);
+    <section class="case wrap" id="recart" aria-labelledby="recart-title">
+      <div class="case-head"><span>Case study 01 / Product design + front-end</span><a href="#work">All work &uarr;</a></div>
+      <div class="case-intro"><span class="case-ghost" aria-hidden="true">01</span><h2 id="recart-title">ReCart<span>.</span></h2><p>One search.<br><em>Every marketplace.</em></p></div>
+      <div class="case-meta"><span>Role / Product Designer + Front-end</span><span>Scope / End-to-end</span><span>Status / Working prototype</span></div>
+      <div class="brief"><div><span>Problem</span><p>Secondhand shoppers jump between marketplaces with different filters, labels, and photography.</p></div><div><span>My move</span><p>I designed a unified browsing model, visual system, responsive behavior, and built it in React and Next.js.</p></div><div><span>Why it matters</span><p>The prototype makes scattered inventory feel comparable and gets people from search to decision faster.</p></div></div>
+      <div class="evidence-layout"><figure class="case-image"><img src="assets/recart.jpg" alt="ReCart prototype showing its search-led shopping experience" loading="lazy"><figcaption>Original prototype screen. In-screen metrics are illustrative.</figcaption></figure><aside class="annotation"><span>Design decision</span><h3>Normalize the mess before asking people to browse it.</h3><p>A shared result model lets people compare price, condition, and source without learning each marketplace first.</p><p><strong>My contribution:</strong> product model, visual system, responsive rules, and front-end implementation.</p></aside></div>
+      <section class="shopping-demo" aria-labelledby="demo-title">
+        <div class="demo-heading"><h3 id="demo-title">Try the ReCart logic</h3><span>Portfolio demo / Sample listings</span></div>
+        <div class="filter-bar"><label class="search-field"><span>Search secondhand</span><input type="search" id="product-search" placeholder="Jacket, shirt, knitwear..." autocomplete="off"></label><label>Category<select id="category"><option value="all">All clothing</option><option value="outerwear">Outerwear</option><option value="knitwear">Knitwear</option><option value="shirts">Shirts</option></select></label><label class="price-filter">Max. price <output id="price-output" for="price">$100</output><input id="price" type="range" min="10" max="100" value="100" step="5"></label><button type="button" class="reset-button" id="reset-filters">Reset</button></div>
+        <div class="result-heading"><p id="result-count" role="status">6 sample listings</p><label>Sort<select id="sort"><option value="recommended">Recommended</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label></div><div class="product-results" id="product-results"></div><noscript><p>Enable JavaScript to explore this filtering study.</p></noscript>
+      </section>
+      <p class="team-value"><span>Hire-me signal</span>A designer who can take an ambiguous product idea through interaction design and into a working front end.</p>
+    </section>
 
-            // Focus on the new section heading for screen readers
-            const heading = targetSection.querySelector('h1');
-            if (heading) {
-                heading.setAttribute('tabindex', '-1');
-                heading.focus();
-                setTimeout(() => heading.removeAttribute('tabindex'), 100);
-            }
+    <section class="case wrap" id="showability" aria-labelledby="showability-title">
+      <div class="case-head"><span>Case study 02 / Accessible UX + brand systems</span><a href="#work">All work &uarr;</a></div>
+      <div class="case-intro"><span class="case-ghost" aria-hidden="true">02</span><h2 id="showability-title">SHOWAbility<span>.</span></h2><p>Access first.<br><em>Ownership after.</em></p></div>
+      <div class="case-meta"><span>Role / UX/UI + Digital Strategy</span><span>Context / Georgia Tech research</span><span>Scope / Audit to handoff</span></div>
+      <div class="brief"><div><span>Problem</span><p>A disability-led arts nonprofit needed an accessible digital presence a volunteer-run team could maintain.</p></div><div><span>My move</span><p>I audited accessibility, reworked information architecture and content, and documented the visual system.</p></div><div><span>Why it matters</span><p>The team received practical navigation, contrast, brand, and publishing guidance they could continue using.</p></div></div>
+      <div class="image-pair"><figure><img src="assets/showability-system.png" alt="SHOWAbility brand system and accessible color palette" loading="lazy"><figcaption>The identity system is the first proof point.</figcaption></figure><figure><img src="assets/showability-performance.jpg" alt="SHOWAbility artists performing on stage" loading="lazy"><figcaption>The artists and performances lead the story.</figcaption></figure></div>
+      <div class="decision-row"><div><span>01 / Representation</span><h3>Center creative agency.</h3><p>Performance photography leads instead of medicalized disability symbols.</p></div><div><span>02 / Action</span><h3>Turn audits into fixes.</h3><p>WCAG and WAVE findings became specific changes to hierarchy, navigation, and contrast.</p></div><div><span>03 / Continuity</span><h3>Design past delivery.</h3><p>Brand and content guidelines made the system usable after handoff.</p></div></div>
+      <p class="team-value"><span>Hire-me signal</span>Accessible design paired with the documentation and content thinking that keep a system useful.</p>
+    </section>
 
-            // Scroll to top smoothly
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    <section class="case wrap" id="reeldeal" aria-labelledby="reeldeal-title">
+      <div class="case-head"><span>Case study 03 / AI + decision-making</span><a href="#work">All work &uarr;</a></div>
+      <div class="case-intro"><span class="case-ghost" aria-hidden="true">03</span><h2 id="reeldeal-title">ReelDeal<span>.</span></h2><p>A better seat.<br><em>A clearer reason.</em></p></div>
+      <div class="case-meta"><span>Role / Product Designer</span><span>Status / Concept + prototype</span><span>Focus / Recommendation UX</span></div>
+      <div class="brief"><div><span>Problem</span><p>A seat map asks people to compare budget, sightline, availability, and preference all at once.</p></div><div><span>My move</span><p>I reframed selection around those trade-offs and designed an explainable recommendation concept.</p></div><div><span>Why it matters</span><p>AI reduces comparison work while keeping the final choice understandable and in the user's control.</p></div></div>
+      <section class="seat-study" aria-labelledby="seat-title"><div><span class="study-label">Interactive concept</span><h3 id="seat-title">A recommendation<br>with a reason.</h3><p>Choose a priority and budget. The system recommends a seat and explains the trade-off.</p><div class="seat-controls"><label>Your priority<select id="seat-priority"><option value="balanced">View + value</option><option value="budget">Lowest price</option><option value="center">Central sightline</option></select></label><label>Budget per seat<select id="seat-budget"><option value="30">Up to $30</option><option value="20">Up to $20</option><option value="15">Up to $15</option><option value="10">Up to $10</option></select></label></div><dl class="recommendation" aria-live="polite"><div><dt id="seat-kind">Suggestion</dt><dd id="seat-choice">Finding a seat...</dd></div><div><dt>Price</dt><dd id="seat-price">-</dd></div><div><dt>Reason</dt><dd id="seat-reason">-</dd></div></dl></div><figure><div class="seat-map" role="group" aria-label="Sample theater seats"></div><div class="seat-legend"><span><i></i>Available</span><span><i class="chosen"></i>Selected</span><span><i class="unavailable"></i>Unavailable</span></div><figcaption>Sample prices and rule-based recommendations. No live booking or AI service.</figcaption><noscript><p>Enable JavaScript to explore this study.</p></noscript></figure></section>
+      <p class="team-value"><span>Hire-me signal</span>Product thinking that gives AI a specific job and keeps people informed at the decision point.</p>
+    </section>
 
-        // High contrast toggle
-        function toggleHighContrast() {
-            document.body.classList.toggle('high-contrast');
-            const button = document.querySelector('.accessibility-toggle');
-            const label = document.getElementById('contrast-label');
-            const isHighContrast = document.body.classList.contains('high-contrast');
-            
-            label.textContent = isHighContrast ? 'Normal View' : 'High Contrast';
-            button.setAttribute('aria-label', 
-                isHighContrast ? 'Switch to normal contrast mode' : 'Switch to high contrast mode'
-            );
+    <section class="case wrap" id="cnn" aria-labelledby="cnn-title">
+      <div class="case-head"><span>Case study 04 / Experience design</span><a href="#work">All work &uarr;</a></div>
+      <div class="case-intro"><span class="case-ghost" aria-hidden="true">04</span><h2 id="cnn-title">CNN Academy<span>.</span></h2><p>Real pressure.<br><em>Designed on purpose.</em></p></div>
+      <div class="case-meta"><span>Role / Simulation Writer + Host</span><span>Dates / Sep 2024 - May 2026</span><span>Scale / 100+ participants</span></div>
+      <div class="brief"><div><span>Challenge</span><p>Help a global cohort practice sourcing, verification, and deadline judgment in a live simulation.</p></div><div><span>My move</span><p>I wrote the scenario, played characters, and controlled the timing and release of information.</p></div><div><span>Why it matters</span><p>Participants practiced real decisions in context, not as a passive lesson or a quiz.</p></div></div>
+      <div class="simulation"><div><span>Experience architecture</span><h3>What you know.<br>When you know it.</h3></div><ol><li><b>01</b><div><h4>Scenario</h4><p>Establish context and stakes.</p></div></li><li><b>02</b><div><h4>Information</h4><p>Sequence what participants learn.</p></div></li><li><b>03</b><div><h4>Decision</h4><p>Make verification matter.</p></div></li><li><b>04</b><div><h4>Deadline</h4><p>Turn judgment into action.</p></div></li></ol></div>
+      <p class="team-value"><span>Hire-me signal</span>Experience design beyond screens: sequencing information, anticipating responses, and adapting live.</p>
+    </section>
 
-            // Announce mode change
-            const announcement = document.createElement('div');
-            announcement.setAttribute('role', 'status');
-            announcement.setAttribute('aria-live', 'polite');
-            announcement.className = 'sr-only';
-            announcement.textContent = isHighContrast ? 
-                'Switched to high contrast mode for improved readability' : 
-                'Switched to normal contrast mode';
-            document.body.appendChild(announcement);
-            setTimeout(() => announcement.remove(), 1000);
-        }
+    <section class="about-band" id="about"><div class="wrap about"><figure><img src="assets/ashna.jpg" alt="Ashna Kasireddy" loading="lazy"><figcaption>Ashna, away from the artboard.</figcaption></figure><div><span class="about-label">The human in the loop</span><h2>Curious across<br><em>the whole stack.</em></h2><p>I move between product design, software, accessibility, storytelling, and live events. Each gives me another way to understand what people need and how a system can help.</p><p>I'm especially interested in the next set of interfaces: how people express intent, how agents act on it, and where human judgment belongs.</p><a class="arrow-link" href="https://linkedin.com/in/ashnakasireddy" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">&nearr;</span></a></div></div></section>
+  </main>
 
-        // Keyboard navigation enhancement
-        document.addEventListener('keydown', (e) => {
-            // Alt + 1-4 for quick navigation
-            if (e.altKey && e.key >= '1' && e.key <= '4') {
-                e.preventDefault();
-                const sections = ['home', 'projects', 'about', 'contact'];
-                const index = parseInt(e.key) - 1;
-                showSection(sections[index]);
-            }
-
-            // Alt + C for contrast toggle
-            if (e.altKey && e.key.toLowerCase() === 'c') {
-                e.preventDefault();
-                toggleHighContrast();
-            }
-        });
-
-        // Add animation on scroll for project cards
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Observe project cards
-        document.addEventListener('DOMContentLoaded', () => {
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
-            });
-        });
-
-        // Skip to main content (accessibility enhancement)
-        const skipLink = document.createElement('a');
-        skipLink.href = '#home-section';
-        skipLink.className = 'sr-only';
-        skipLink.textContent = 'Skip to main content';
-        skipLink.style.cssText = `
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--color-accent);
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            z-index: 100;
-        `;
-        skipLink.addEventListener('focus', function() {
-            this.style.top = '0';
-        });
-        skipLink.addEventListener('blur', function() {
-            this.style.top = '-40px';
-        });
-        document.body.insertBefore(skipLink, document.body.firstChild);
-    </script>
+  <footer class="wrap"><div class="footer-eyebrow"><span>03</span><span class="rule" aria-hidden="true"></span><span>/Contact</span></div><span>Have something interesting to solve?</span><h2>Let's make it<br><em>make sense.</em></h2><a class="contact" href="mailto:akasireddy3@gatech.edu">akasireddy3@gatech.edu <span aria-hidden="true">&nearr;</span></a><div class="footer-bottom"><span>Ashna Kasireddy &copy; 2026</span><a href="#top">Back to top &uarr;</a></div></footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
